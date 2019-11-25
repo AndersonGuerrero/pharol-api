@@ -1,4 +1,4 @@
-import { Schema } from 'mongoose'
+import { Schema } from 'mongoose';
 
 export const ClientSchema = new Schema({
     rut: { type: String, required: true },
