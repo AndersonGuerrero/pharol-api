@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 
@@ -25,8 +25,7 @@ export class ClientService {
             const client = await this.clientModel.findById(clientId);
             return client;
         } catch (error) {
-            console.log("Client not found");
-            return null;
+            throw new NotFoundException('Client Does not exist');
         }
     }
 
@@ -36,13 +35,21 @@ export class ClientService {
     }
 
     async deleteClient(clientId: string): Promise<Client> {
-        const client = await this.clientModel.findByIdAndDelete(clientId);
-        return client;
+        try {
+            const client = await this.clientModel.findByIdAndDelete(clientId);
+            return client;
+        } catch (error) {
+            throw new NotFoundException('Client Does not exist');    
+        }
     }
 
     async updateClient(clientId: string, createClientDto: CreateClientDto): Promise<Client> {
-        const updatedClient = await this.clientModel.findByIdAndUpdate(
+        try {
+            const updatedClient = await this.clientModel.findByIdAndUpdate(
             clientId, createClientDto, { new: true });
-        return updatedClient;
+            return updatedClient;
+        } catch (error) {
+            throw new NotFoundException('Client Does not exist');    
+        }
     }
 }
