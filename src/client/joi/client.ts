@@ -8,7 +8,9 @@ export const createClientSchema = Joi.object({
     phone: Joi.string().min(13).max(14).required(),
     sex: Joi.string().valid('m', 'f').required(),
     address: Joi.array().items(Joi.string().required()),
-    email: Joi.string().email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } }).required() 
+    email: Joi.string().email(
+        { minDomainSegments: 2, tlds: { allow: ['com', 'net'] } }
+    ).required() 
 });
 
 export const updateClientSchema = Joi.object({
