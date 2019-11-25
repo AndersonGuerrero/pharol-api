@@ -1,8 +1,10 @@
-import { Controller, Get, Post, Put, Delete, Res, Body, HttpStatus, Param, NotFoundException, Query } from '@nestjs/common';
+import { UsePipes, Controller, Get, Post, Put, Delete, Res, Body, HttpStatus, Param, NotFoundException, Query } from '@nestjs/common';
 import { ApiCreatedResponse, ApiForbiddenResponse, ApiUseTags, ApiNotFoundResponse } from '@nestjs/swagger';
 
 import { ClientService } from './client.service'
 import { CreateClientDto } from './dto/client.dto'
+import { createClientSchema, updateClientSchema } from './joi/client'
+import { JoiValidationPipe } from './joi/JoiValidationPipe'
 
 @ApiUseTags('clients')
 @Controller('client')
@@ -21,6 +23,7 @@ export class ClientController {
 
     @Post('/')
     @ApiForbiddenResponse({ description: 'Forbidden.'})
+    @UsePipes(new JoiValidationPipe(updateClientSchema))
     async getClientsFilter(
         @Res() res, @Body() createClientDto:CreateClientDto) {
             const clients = await this.clientService.getClientsFilter(createClientDto);
@@ -30,10 +33,11 @@ export class ClientController {
             });
         }
         
-        @Post('/create')
-        @ApiCreatedResponse({ description: 'The record has been successfully created.'})
-        @ApiForbiddenResponse({ description: 'Forbidden.'})
-        async createClient(@Res() res, @Body() createClientDto:CreateClientDto ){
+    @Post('/create')
+    @ApiCreatedResponse({ description: 'The record has been successfully created.'})
+    @ApiForbiddenResponse({ description: 'Forbidden.'})
+    @UsePipes(new JoiValidationPipe(createClientSchema))
+    async createClient(@Res() res, @Body() createClientDto:CreateClientDto ){
         const client = await this.clientService.createClient(createClientDto);
         return res.status(HttpStatus.OK).json({
             message: 'Client Successfully Created',
@@ -67,6 +71,7 @@ export class ClientController {
     @Put('/update/:clientId')
     @ApiForbiddenResponse({ description: 'Forbidden.'})
     @ApiNotFoundResponse({ description: 'Client Does not exist'})
+    @UsePipes(new JoiValidationPipe(updateClientSchema))
     async updateClient(@Res() res, @Body() createClientDto: CreateClientDto, @Param('clientId') clientId){
         const updatedClient = await this.clientService.updateClient(clientId, createClientDto);   
         res.status(HttpStatus.OK).json({
