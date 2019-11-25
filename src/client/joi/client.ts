@@ -1,6 +1,5 @@
 import Joi = require('@hapi/joi');
 
-
 export const createClientSchema = Joi.object({
     rut: Joi.string().alphanum().min(9).max(9).required(),
     rut_chilen: Joi.string().alphanum().min(9).max(9).required(),
