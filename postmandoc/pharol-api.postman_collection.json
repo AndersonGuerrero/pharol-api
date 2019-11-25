@@ -24,7 +24,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://127.0.0.1:3000/client",
+					"raw": "https://safe-forest-93602.herokuapp.com/client",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -56,7 +56,7 @@
 					"raw": "{\n\t\"rut\": \"24390246\",\n    \"rut_chilen\": \"1088361028\",\n    \"name\": \"Anderson Andres\",\n    \"last_name\": \"Guerrero Garcia\",\n    \"phone\": \"+573015120801\",\n    \"sex\": \"m\",\n    \"email\": \"aguerrerodev@gmail.com\",\n    \"address\": [\n    \t\"Risaralda Pereira ,Cuba Manzana 19 casa 71 piso 1\",\n    \t\"Risaralda Pereira ,Cuba Manzana 19 casa 71 piso 2\"\n    ]\n}"
 				},
 				"url": {
-					"raw": "http://127.0.0.1:3000/client/create",
+					"raw": "https://safe-forest-93602.herokuapp.com/client/create",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -85,7 +85,7 @@
 					}
 				],
 				"url": {
-					"raw": "http://127.0.0.1:3000/client/:clientId",
+					"raw": "https://safe-forest-93602.herokuapp.com/client/:clientId",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -124,7 +124,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://127.0.0.1:3000/client/delete/:clientId",
+					"raw": "https://safe-forest-93602.herokuapp.com/client/delete/:clientId",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -164,7 +164,7 @@
 					"raw": "{\n\t\"email\": \"anderson.andres.guerrero@gmail.com\"\n}"
 				},
 				"url": {
-					"raw": "http://127.0.0.1:3000/client/update/:clientId",
+					"raw": "https://safe-forest-93602.herokuapp.com/client/update/:clientId",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -204,7 +204,7 @@
 					"raw": " {\n\t\"rut\": \"24390246\",\n\t\"rut_chilen\": \"1088361028\",\n\t\"name\": \"Anderson Andres\",\n\t\"last_name\": \"Guerrero Garcia\",\n\t\"phone\": \"+573015120801\",\n    \"sex\": \"m\",\n    \"email\": \"aguerrerodev@gmail.com\",\n    \"address\": [\n                \"Risaralda Pereira ,Cuba Manzana 19 casa 71 piso 1\",\n                \"Risaralda Pereira ,Cuba Manzana 19 casa 71 piso 2\"\n            ]\n}"
 				},
 				"url": {
-					"raw": "http://127.0.0.1:3000/client/",
+					"raw": "https://safe-forest-93602.herokuapp.com/client/",
 					"protocol": "http",
 					"host": [
 						"127",
